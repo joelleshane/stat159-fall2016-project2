@@ -18,6 +18,9 @@ all: eda regressions report/report.pdf
 data:
 	curl -o data/Credit.csv "http://www-bcf.usc.edu/~gareth/ISL/Credit.csv"
 
+data/cred_f: data/Credit.csv 
+	cd code/scripts; Rscript -e as-factor.R
+
 tests:
 
 #exploratory data analysis using (eda-script.R)
