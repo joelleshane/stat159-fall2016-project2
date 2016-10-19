@@ -1,6 +1,6 @@
 # Downloading the data and fixing the variables to factor form when applicable for the models.
 
-credit <- read.csv("http://www-bcf.usc.edu/~gareth/ISL/Credit.csv")
+credit <- read.csv("../../data/Credit.csv")
 temp_credit <- model.matrix(Balance ~ ., data = credit)
 new_credit <- cbind(temp_credit[,-1], Balance = credit$Balance)
 
