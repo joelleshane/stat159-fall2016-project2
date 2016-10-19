@@ -3,3 +3,6 @@ Regression models
 Joelle: Ridge, PCR
 Abby: Lasso, PLSR
 
+Commit Style Guide
+
+Choose one of the following types of commits (scripts, report, tests, misc, etc. )
