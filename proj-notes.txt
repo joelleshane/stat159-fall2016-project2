@@ -1,0 +1,5 @@
+Regression models
+
+Joelle: Ridge, PCR
+Abby: Lasso, PLSR
+
