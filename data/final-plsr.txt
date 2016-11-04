@@ -1,0 +1,15 @@
+, , 9 comps
+
+                                                      as.matrix(cred_f[, 14])
+as.matrix(cred_f[, c(-1, -2, -14)])Income                        -0.598137940
+as.matrix(cred_f[, c(-1, -2, -14)])Limit                          0.957819003
+as.matrix(cred_f[, c(-1, -2, -14)])Rating                         0.383140840
+as.matrix(cred_f[, c(-1, -2, -14)])Cards                          0.052269035
+as.matrix(cred_f[, c(-1, -2, -14)])Age                           -0.023401547
+as.matrix(cred_f[, c(-1, -2, -14)])Education                     -0.007590278
+as.matrix(cred_f[, c(-1, -2, -14)])GenderFemale                  -0.011926799
+as.matrix(cred_f[, c(-1, -2, -14)])StudentYes                     0.278181378
+as.matrix(cred_f[, c(-1, -2, -14)])MarriedYes                    -0.008649141
+as.matrix(cred_f[, c(-1, -2, -14)])EthnicityAsian                 0.015944759
+as.matrix(cred_f[, c(-1, -2, -14)])EthnicityCaucasian             0.011062746
+

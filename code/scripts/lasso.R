@@ -43,7 +43,7 @@ load("../../data/test-sets.RData")
 newx <- as.matrix(test_data[,-12])
 
 lasso_pred <- predict(lasso, newx=newx, s= "lambda.min", type="response")
-save(lasso_pred, file="../../data/lasso_pred.RData")
+save(lasso_pred, file="../../data/lasso-pred.RData")
 
 source("../../functions/mean-squared.R")
 
@@ -55,11 +55,11 @@ cred_f <- read.csv("../../data/cred_f.csv")
 
 final_lasso <- glmnet(x=as.matrix(cred_f[,c(-1, -2, -14)]), y=as.matrix(cred_f[,14]), intercept = FALSE, standardize = FALSE, lambda=lasso$lambda.min, alpha=1)
 
-save(final_lasso, file="../../data/final_lasso.RData")
+save(final_lasso, file="../../data/final-lasso.RData")
 
 coef_l <- coef(final_lasso)
 
-sink("../../data/final_lasso.txt")
+sink("../../data/final-lasso.txt")
 coef_l
 sink()
 

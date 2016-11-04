@@ -15,7 +15,7 @@
 
 # all: eda regressions report/report.pdf
 
-all: data data/cred_f data/test-sets eda lasso regressions tests slides report session
+all: data data/cred_f data/test-sets eda lasso plsr regressions tests slides report session
 
 data:
 	curl -o data/Credit.csv "http://www-bcf.usc.edu/~gareth/ISL/Credit.csv"
@@ -59,8 +59,8 @@ lasso: data/cred_f.csv data/train.csv data/test.csv code/scripts/lasso.R
 
 # Partial Least Squares Regression (PLSR.R)
 
-# plsr: data/Credit.csv code/scripts/PLSR.R
-#         cd code/scripts; Rscript -e PLSR.R
+plsr: data/cred_f.csv data/test.csv data/train.csv code/scripts/PLSR.R
+	cd code/scripts; Rscript PLSR.R
 
 #regression (all five types of regressions)
 
