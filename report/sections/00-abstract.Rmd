@@ -1,0 +1,3 @@
+**Abstract**
+
+This report aims to find the best predictor of credit card balance. The data includes ten different factors that could influence credit card balance. Using five different models of regression, we analyze the data and determine which of the methods best predicts credit card balance using the mean squared error of each of the regression models after they're applied to the data. 
