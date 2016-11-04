@@ -1,0 +1,11 @@
+**Introduction**
+
+With regressions, there are multiple predictors that influence the response variable. Our models attempt to quantify their relationship so that we can accuratly predict the response variable given different levels of the predictors. The models used in this report are as follows:
+
+* OLS
+* Ridge 
+* Lasso
+* PCR
+* PLSR
+
+These models represent different methods of running a regression. 

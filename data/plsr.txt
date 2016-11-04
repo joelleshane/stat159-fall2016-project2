@@ -1,0 +1,5 @@
+Partial least squares regression , fitted with the kernel algorithm.
+Cross-validated using 10 random segments.
+Call:
+plsr(formula = as.matrix(train[, 12]) ~ as.matrix(train[, -12]),     validation = "CV")
+[1] 9
