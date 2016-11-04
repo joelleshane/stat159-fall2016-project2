@@ -1,0 +1,14 @@
+, , 10 comps
+
+                               b
+Limit               0.8438808129
+Rating              0.0279898643
+Cards               0.0866318092
+Age                -0.0827351720
+Education          -0.0002233453
+GenderFemale        0.0012540779
+StudentYes          0.2627088788
+MarriedYes         -0.0193056771
+EthnicityAsian      0.0123240437
+EthnicityCaucasian  0.0198575457
+

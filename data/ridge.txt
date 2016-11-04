@@ -1,0 +1,15 @@
+12 x 1 sparse Matrix of class "dgCMatrix"
+                              1
+(Intercept)         .          
+Income             -0.536283704
+Limit               0.665860801
+Rating              0.608325508
+Cards               0.044179119
+Age                -0.019440145
+Education          -0.008422115
+GenderFemale       -0.014687460
+StudentYes          0.275825682
+MarriedYes         -0.009494436
+EthnicityAsian      0.022006508
+EthnicityCaucasian  0.015191367
+[1] 0.01

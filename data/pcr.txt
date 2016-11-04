@@ -1,0 +1,8 @@
+Principal component regression , fitted with the singular value decomposition algorithm.
+Cross-validated using 10 random segments.
+Call:
+pcr(formula = test_balance ~ test_data, validation = "CV")
+              1 comps  2 comps  3 comps  4 comps 5 comps  6 comps  7 comps
+test_balance 45.51744 41.60332 41.37456 41.86363 43.2839 44.21848 40.79338
+              8 comps  9 comps 10 comps 11 comps
+test_balance 43.45835 40.87675   5.9659 6.058814
