@@ -1,0 +1,19 @@
+Abtract
+
+This report aims to find the best predictor of credit card balance. The data includes ten different factors that could influence credit card balance. Using five different models of regression, we analyze the data and determine which of the methods best predicts credit card balance using the mean squared error of each of the regression models after they're applied to the data. 
+
+Introduction
+
+With regressions, there are multiple predictors that influence the response variable. Our models attempt to quantify their relationship so that we can accuratly predict the response variable given different levels of the predictors. The models used in this report are as follows:
+
+* OLS
+* Ridge 
+* Lasso
+* PCR
+* PLSR
+
+These models represent different methods of running a regression. 
+
+Data
+
+The Credit dataset was downloaded from http://www-bcf.usc.edu/~gareth/ISL/Credit.csv. The predictors in this dataset are *Income*, *Limit*, *Rating*, *Cards*, *Age*, *Education*, *Gender* (qualitative), *Student* (qualitative), *Married* (qualitative), and *Ethnicity* (qualitiative). These in combination are used to predict credit card balance (labeled as Balance in the dataset).
