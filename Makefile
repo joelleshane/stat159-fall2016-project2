@@ -13,9 +13,12 @@
 .PHONY: session
 .PHONY: clean
 
-# all: eda regressions report/report.pdf
+# all: create eda regressions report/report.pdf
 
-all: data data/cred_f eda regressions tests slides report session
+all: create data data/cred_f eda regressions tests slides report session
+
+create:
+	cat(“Mean Squared Errors of Regressions”, “\n”, file = “data/mse.RData”)
 
 data:
 	curl -o data/Credit.csv "http://www-bcf.usc.edu/~gareth/ISL/Credit.csv"
