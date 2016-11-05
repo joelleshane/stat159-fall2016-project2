@@ -36,6 +36,7 @@ pcr_pred <- predict(pcr, newdata = test_data, s = "validation$PRESS", type = "re
 
 source("../functions/mean_squared.R")
 mse_pcr <- Mean_squared_error(test_balance, pcr_pred)
+save(mse_pcr, file = "../../data/mse-pcr.txt")
 
 #fitting full data
 
