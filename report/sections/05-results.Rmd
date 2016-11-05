@@ -1,0 +1,27 @@
+To figure out the best model for each method, we look at the Mean Squared Error for our models. 
+
+Model | Mean Squared Error
+----------|-----------------
+OLS | 0.048
+Ridge | 0.046
+Lasso | 0.047
+PCR | 0.427
+PLSR | 0.392
+
+The lowest value for MSE is with the Ridge model, so therefore it is the best regression model for our data. The graph of the MSE of the ridge models further illustrates that is it the best model for our regression.
+
+
+\centerline{\includegraphics[height=2in]{../../../images/Ridge.png}}
+
+\centerline{\includegraphics[height=2in]{../../../images/pcr.png}}
+
+We can see as the number of components increases, the mean squared error of the PCR model decreases. This is minimized at around ten components but would still have a great MSE than the Ridge model.
+
+\centerline{\includegraphics[height=2in]{../../../images/plsr.png}}
+
+As in the PCR model, the PLSR model's MSE also decreases as the number of components increases. After the number of components is above three, however, the mean squared error is the same regardless of how many components there are. 
+
+\centerline{\includegraphics[height=2in]{../../../images/Lasso.png}}
+
+The Lasso Model Cross Validation plot shows the mean squared error relative the the lamba (tuning parameter) used in the regression. Here We can see that this would be a much better model if log of lambda was negative. 
+

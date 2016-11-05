@@ -1,8 +1,6 @@
-Abtract
+**Abstract**
 
-This report aims to find the best predictor of credit card balance. The data includes ten different factors that could influence credit card balance. Using five different models of regression, we analyze the data and determine which of the methods best predicts credit card balance using the mean squared error of each of the regression models after they're applied to the data. 
-
-Introduction
+This report aims to find the best predictor of credit card balance. The data includes ten different factors that could influence credit card balance. Using five different models of regression, we analyze the data and determine which of the methods best predicts credit card balance using the mean squared error of each of the regression models after they're applied to the data. **Introduction**
 
 With regressions, there are multiple predictors that influence the response variable. Our models attempt to quantify their relationship so that we can accuratly predict the response variable given different levels of the predictors. The models used in this report are as follows:
 
@@ -12,8 +10,71 @@ With regressions, there are multiple predictors that influence the response vari
 * PCR
 * PLSR
 
-These models represent different methods of running a regression. 
+These models represent different methods of running a regression. **Data**
 
-Data
+The Credit dataset was downloaded from (http://www-bcf.usc.edu/~gareth/ISL/Credit.csv). The predictors in this dataset are *Income*, *Limit*, *Rating*, *Cards*, *Age*, *Education*, *Gender* (qualitative), *Student* (qualitative), *Married* (qualitative), and *Ethnicity* (qualitiative). These in combination are used to predict credit card balance (labeled as Balance in the dataset).* Ordinary Least Squares:
 
-The Credit dataset was downloaded from http://www-bcf.usc.edu/~gareth/ISL/Credit.csv. The predictors in this dataset are *Income*, *Limit*, *Rating*, *Cards*, *Age*, *Education*, *Gender* (qualitative), *Student* (qualitative), *Married* (qualitative), and *Ethnicity* (qualitiative). These in combination are used to predict credit card balance (labeled as Balance in the dataset).
+This regression method invloves determining a linear relationship between the independent variables and the dependent variable (Balance).
+
+The model is as follows:
+$$Y = \B_0 + \B_1X_1 + ... + \B_nX_n + \u$$
+
+Using the data, the function **lm()** will hold all independnet varaibles constant except one and see the effects that has on the dependent variable. Repeating this process for each variable, it will return values for $$(\B_0, ..., \B_n)$$ thus allowing us to estimate the realationship between each variable and the depenedent variable. For each independent variable $$\X_i$$ it's predicted effect on the dependent variable is $$\B_i$$.
+
+*Ridge:
+
+The ridge regression is a regression that uses a shrinkage method to model the effect of the independent variables on the dependent variable. It uses a tuning parameter to calcualte what the shrinkage of each variable should be. Using the function **cv.glmnet()** and the tuning parameter ($\lambda\$), we can estimate the coefficients for each of the independent variables using the value for the tuning parameter that minimizes $\sum_{i=1}^n (y_i-\sum_{j=1}^p x_{ij}\beta_j)^2$.
+
+* Lasso:
+
+The lasso regression is also a shrinkage regression method. The main idea is the same as the ridge regression but lasso uses a different tuning parameter. 
+
+
+* Principle Components Regression:
+
+If we get different values for coefficient in summary from our regression and our correlation coefficient then something is wrong with our model. It suggests there is multicolineraity of variables. Thus we impliment the Principle Components Regression, which weights original variables and combines them into another component.
+
+$$\X_1 --> \w_1                                     ---> \B_1$$
+$$\X_2 --> \w_2 --> principal component (1, 2, ... k) ---> \B_2 ---> yhat$$
+$$\X_3 --> \w_3                                     ---> \B_k
+
+The function **pcr()** finds a matrix containing principle components and uses those principle components as new predictors to fit y. This gets rid of multicolineraity issues because the principal components are made with eigenvectors and form framework with corresponding space that they generate, so they are already orthogonal and we can calculate the inverse of the matrix without problems.
+
+
+* Partial Least Squares Regression:
+
+The Partial Least Squares Regression is similar to the PCR regression except it uses the dependent variable in the determination of the weights for each of the independent variables. 
+
+Using Mean Squared Error:
+
+To find the effectiveness of each regression (and ultimately to find which regression model best fits our data), we computed the mean squared error using this formula:
+
+$$Mean Squared Error = \frac{1}{n}\sum_{i=1}^{n}(y_i - y_{hati})^2$$
+To figure out the best model for each method, we look at the Mean Squared Error for our models. 
+
+Model | Mean Squared Error
+----------|-----------------
+OLS | 0.048
+Ridge | 0.046
+Lasso | 0.047
+PCR | 0.427
+PLSR | 0.392
+
+The lowest value for MSE is with the Ridge model, so therefore it is the best regression model for our data. The graph of the MSE of the ridge models further illustrates that is it the best model for our regression.
+
+
+\centerline{\includegraphics[height=2in]{../../../images/Ridge.png}}
+
+\centerline{\includegraphics[height=2in]{../../../images/pcr.png}}
+
+We can see as the number of components increases, the mean squared error of the PCR model decreases. This is minimized at around ten components but would still have a great MSE than the Ridge model.
+
+\centerline{\includegraphics[height=2in]{../../../images/plsr.png}}
+
+As in the PCR model, the PLSR model's MSE also decreases as the number of components increases. After the number of components is above three, however, the mean squared error is the same regardless of how many components there are. 
+
+\centerline{\includegraphics[height=2in]{../../../images/Lasso.png}}
+
+The Lasso Model Cross Validation plot shows the mean squared error relative the the lamba (tuning parameter) used in the regression. Here We can see that this would be a much better model if log of lambda was negative. 
+
+Regressions are useful because they can help predict what a response will be to varying levels of each of the predictors and the predictors can be set accordingly to obtain a deisred result. In order to get a more accurate forecast, the best model for the data has to be chosen. In this report, we explore five different regression methods to ultimately choose the one that has the lowest mean squared error. In other words, we are seacrhing for the regression model that predicts the response variable with the least error. After preforming the regressions and comparing their streadfastness, it is clear that the Ridge model is the best model to use for the regression.
