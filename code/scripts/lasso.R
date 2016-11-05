@@ -49,6 +49,8 @@ source("../../functions/mean-squared.R")
 
 MSE_lasso <- Mean_squared_error(test_data[12],lasso_pred)
 
+save(MSE_lasso, file = "../../data/mse-lasso.txt")
+
 cat("Lasso:", MSE_lasso, "\n", file="../../data/mse.RData", append=TRUE)
 
 cred_f <- read.csv("../../data/cred_f.csv")
