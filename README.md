@@ -6,7 +6,7 @@ Instructions on how to reproduce:
 * download from git repository
 * run makefile 
 
-Make commands for phony targets:
+Make commands for .Phony targets:
 
 all: phony targets
 data: download and clean Credit.csv into data folder
