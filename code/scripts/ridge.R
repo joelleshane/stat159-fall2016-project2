@@ -35,6 +35,7 @@ sink()
 
 source("../functions/mean_squared.R")
 mse_ridge <- Mean_squared_error(test_balance, ridge_pred)
+save(mse_ridge, file = "../../data/mse-ridge.txt")
 
 
 # Fitting the data to the full data
