@@ -1,0 +1,97 @@
+---
+title: "Regression Model Comparison Report"
+author: "Joelle Shane and Abby Vogel"
+date: "November 4, 2016"
+output: ioslides_presentation
+---
+
+## Introduction
+
+With regressions, there are multiple predictors that influence the response variable. Our models attempt to quantify their relationship so that we can accuratly predict the response variable given different levels of the predictors.
+
+## Regression Models Used
+
+- Ordinary Least Squares
+- Ridge
+- Lasso
+- Principle Components Regression
+- Partial Least Squared Regression
+
+## Data
+
+The predictors in this dataset are *Income*, *Limit*, *Rating*, *Cards*, *Age*, *Education*, *Gender* (qualitative), *Student* (qualitative), *Married* (qualitative), and *Ethnicity* (qualitiative). These in combination are used to predict credit card balance (labeled as Balance in the dataset).
+
+## Ordinary Least Squares
+
+Coefficients and MSE for this model:
+
+```{r}
+load(file = "~/stat159-project2/data/OLS.RData")
+load(file = "~/stat159-project2/data/ols_pred.RData")
+load("~/stat159-project2/data/test-sets.RData")
+test_balance <- as.data.frame(test)[,13]
+source("~/stat159-project2/code/functions/mean_squared.R")
+a
+Mean_squared_error(test_balance,ols_pred)
+```
+
+## Ridge
+
+Coefficients and MSE for this model:
+
+```{r, echo=FALSE}
+load(file = "~/stat159-project2/data/ridge.RData")
+load(file = "~/stat159-project2/data/ridge_pred.RData")
+load("~/stat159-project2/data/test-sets.RData")
+test_balance <- as.data.frame(test)[,13]
+source("~/stat159-project2/code/functions/mean_squared.R")
+Mean_squared_error(test_balance,ridge_pred)
+coef(ridge)
+```
+
+
+## Lasso
+
+Coefficients and MSE for this model:
+
+```{r, echo=FALSE}
+load(file = "~/stat159-project2/data/lasso.RData")
+load(file = "~/stat159-project2/data/lasso-pred.RData")
+load("~/stat159-project2/data/test-sets.RData")
+test_balance <- as.data.frame(test)[,13]
+source("~/stat159-project2/code/functions/mean_squared.R")
+Mean_squared_error(test_balance,lasso_pred)
+coef(lasso)
+```
+
+## Principle Components Regression
+
+Coefficients and MSE for this model:
+
+```{r, echo=FALSE}
+load(file = "~/stat159-project2/data/pcr.RData")
+load("~/stat159-project2/data/test-sets.RData")
+library(glmnet)
+library(pls)
+pcr <- pcr(test_balance ~ test_data, validation = "CV")
+## MSE : 0.4268
+coef(pcr)
+```
+
+## Partial Least Squares Regression
+
+Coefficients and MSE for this model:
+
+```{r, echo=FALSE}
+load(file = "~/stat159-project2/data/plsr.RData")
+load(file = "~/stat159-project2/data/plsr-pred.RData")
+load("~/stat159-project2/data/test-sets.RData")
+test_balance <- as.data.frame(test)[,13]
+source("~/stat159-project2/code/functions/mean_squared.R")
+Mean_squared_error(test_balance,plsr_pred)
+coef(plsr_model)
+```
+
+## Conclusion
+
+Regressions are useful because they can help predict what a response will be to varying levels of each of the predictors and the predictors can be set accordingly to obtain a deisred result. In order to get a more accurate forecast, the best model for the data has to be chosen. In this report, we explore five different regression methods to ultimately choose the one that has the lowest mean squared error. In other words, we are seacrhing for the regression model that predicts the response variable with the least error. After preforming the regressions and comparing their streadfastness, it is clear that the Ridge model is the best model to use for the regression.
